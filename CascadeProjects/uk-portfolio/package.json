@@ -3,12 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://chep-collab.github.io/uk-portfolio",
+  "homepage": "https://chep-collab.github.io/mercy-portfolio",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "vite build"
-   
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
