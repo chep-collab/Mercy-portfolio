@@ -24,24 +24,23 @@ const themeOptions: ThemeOptions = {
         },
       },
     },
-    // Placeholder for components (styles will be added dynamically)
   },
   // Define breakpoints
   breakpoints: {
     values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
+      xs: 0,    // Extra small devices (e.g., phones)
+      sm: 600,  // Small devices (e.g., tablets)
+      md: 900,  // Medium devices (e.g., small laptops)
+      lg: 1200, // Large devices (e.g., desktops)
+      xl: 1536, // Extra large devices
     },
   },
 };
 
-// Create the theme and then extend it with dynamic styles
+// Create the theme
 const theme = createTheme(themeOptions);
 
-// Extend the theme with breakpoint-specific styles
+// Extend the theme with dynamic responsive styles
 theme.components = {
   ...theme.components,
   MuiContainer: {
@@ -70,6 +69,26 @@ theme.components = {
       root: ({ theme }) => ({
         [theme.breakpoints.down('sm')]: {
           padding: '8px 0',
+        },
+      }),
+    },
+  },
+  MuiPaper: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        [theme.breakpoints.down('sm')]: {
+          padding: '10px',
+        },
+      }),
+    },
+  },
+  // Global styles for custom components (e.g., ProjectCard)
+  MuiBox: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        [theme.breakpoints.down('sm')]: {
+          padding: '10px',
+          margin: '5px',
         },
       }),
     },

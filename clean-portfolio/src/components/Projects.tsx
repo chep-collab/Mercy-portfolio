@@ -1,34 +1,44 @@
-import React from 'react';
+import React from 'react'; // Ensure React is imported
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material';
 import { projects } from '../data/projects';
 
 const Section = styled('div')(({ theme }) => ({
-  textAlign: 'center', // Remove padding here, handled by theme
+  textAlign: 'center',
 }));
 
 const ProjectCard = styled('div')(({ theme }) => ({
   background: theme.palette.background.paper,
-  padding: '20px',
+  padding: theme.spacing(2),
   borderRadius: '10px',
-  margin: '10px',
-  maxWidth: '100%', // Full width, theme handles breakpoints
+  margin: theme.spacing(1),
+  maxWidth: '100%',
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '300px',
+  },
 }));
 
-const ProjectImage = styled('img')({
+const ProjectImage = styled('img')(({ theme }) => ({
   width: '100%',
   height: 'auto',
   objectFit: 'contain',
   borderRadius: '5px',
-  marginBottom: '15px',
-});
+  marginBottom: theme.spacing(1.5),
+}));
+
+const ProjectGrid = styled('div')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  gap: theme.spacing(2),
+}));
 
 const Projects = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
       <Section>
         <h2>Projects</h2>
-        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px' }}>
+        <ProjectGrid>
           {projects.map((project) => (
             <motion.div key={project.id} whileHover={{ scale: 1.05 }}>
               <ProjectCard>
@@ -53,7 +63,7 @@ const Projects = () => {
               </ProjectCard>
             </motion.div>
           ))}
-        </div>
+        </ProjectGrid>
       </Section>
     </motion.div>
   );

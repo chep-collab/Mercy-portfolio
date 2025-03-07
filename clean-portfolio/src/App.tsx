@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'; // Ensure React is imported
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -8,7 +8,7 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import theme from './theme'; // Import the new theme
+import theme from './theme';
 
 function App() {
   const [themeMode, setThemeMode] = useState<'dark' | 'light'>('dark');
